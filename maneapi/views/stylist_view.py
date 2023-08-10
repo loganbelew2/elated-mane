@@ -55,7 +55,8 @@ class StylistView(ViewSet):
         stylists = User.objects.all()
         serialized = StylistSerializer(stylists, many=True)
         return Response(serialized.data)
-
+# class StylistCustomersSerializer(serializers.ModelSerializer):
+    
 
 class StylistSerializer(serializers.ModelSerializer):
     """JSON serializer for stylist creator"""
@@ -63,4 +64,5 @@ class StylistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'last_name', 'email', 'username', 'customers')
+        fields = ('id', 'first_name', 'last_name', 'email', 'username', 'customers', 'equipment')
+        depth = 1
